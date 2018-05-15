@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SELECTED_CONTACT_COUNT</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@selectedContacts@</string>
+		<key>selectedContacts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>li</string>
+			<key>zero</key>
+			<string>No Contacts Selected</string>
+			<key>one</key>
+			<string>I AM ERROR</string>
+			<key>other</key>
+			<string>%li Contacts Selected</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
