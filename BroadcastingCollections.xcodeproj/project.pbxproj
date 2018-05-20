@@ -80,6 +80,12 @@
 		08B656E32084225A009F41A6 /* BroadcastingOrderedSetRepublisherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089084AC1EC836D40018FEC7 /* BroadcastingOrderedSetRepublisherTests.swift */; };
 		08B656E420843A17009F41A6 /* BroadcastingOrderedSetSourcedContentsManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089084A01EC836D40018FEC7 /* BroadcastingOrderedSetSourcedContentsManagerTestCase.swift */; };
 		08B656E520843FD9009F41A6 /* BroadcastingOrderedSetFilteringContentsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089084A11EC836D40018FEC7 /* BroadcastingOrderedSetFilteringContentsManagerTests.swift */; };
+		08D7F10920B14ABC006030DD /* BroadcastingDictionaryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08385E5E2027D2AC00C5D7D0 /* BroadcastingDictionaryListener.swift */; };
+		08D7F10A20B14AD3006030DD /* BroadcastingDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08720CC7201D7AD60059171B /* BroadcastingDictionary.swift */; };
+		08D7F10B20B14AE6006030DD /* EditableBroadcastingDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08720CC9201D7B2C0059171B /* EditableBroadcastingDictionary.swift */; };
+		08D7F10C20B14AF5006030DD /* AnyBroadcastingDictionaryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08385E5C2027D22E00C5D7D0 /* AnyBroadcastingDictionaryListener.swift */; };
+		08D7F10D20B14BAB006030DD /* DictionaryChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C72CD920156D540064BAF7 /* DictionaryChange.swift */; };
+		08D7F10F20B14DE0006030DD /* BroadcastingDictionaryContentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D7F10E20B14DE0006030DD /* BroadcastingDictionaryContentsManager.swift */; };
 		08EF334E2099843A00D03E41 /* BroadcastingOrderedSetSortingContentsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089084A21EC836D40018FEC7 /* BroadcastingOrderedSetSortingContentsManagerTests.swift */; };
 		FF499B131EE931B800EC7264 /* BroadcastingSetTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF499B121EE931B800EC7264 /* BroadcastingSetTestCase.swift */; };
 		FF499B151EE9329E00EC7264 /* BroadcastingSetSourcedContentsManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF499B141EE9329E00EC7264 /* BroadcastingSetSourcedContentsManagerTestCase.swift */; };
@@ -178,6 +184,7 @@
 		08B656E1208414C1009F41A6 /* BroadcastingOrderedSetRepublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastingOrderedSetRepublisher.swift; sourceTree = "<group>"; };
 		08C72CD920156D540064BAF7 /* DictionaryChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryChange.swift; sourceTree = "<group>"; };
 		08C72CDB201571C60064BAF7 /* CollectionChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionChange.swift; sourceTree = "<group>"; };
+		08D7F10E20B14DE0006030DD /* BroadcastingDictionaryContentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastingDictionaryContentsManager.swift; sourceTree = "<group>"; };
 		08EAB46F1EE3DBE70077DBF7 /* EditableBroadcastingCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableBroadcastingCollection.swift; sourceTree = "<group>"; };
 		08EAB4711EE3E22A0077DBF7 /* BroadcastingCollectionListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadcastingCollectionListener.swift; sourceTree = "<group>"; };
 		FF0D503D1EEE559500F8E342 /* BroadcastingOrderedSetSetSortingContentsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastingOrderedSetSetSortingContentsManagerTests.swift; sourceTree = "<group>"; };
@@ -420,6 +427,7 @@
 			children = (
 				08385E5C2027D22E00C5D7D0 /* AnyBroadcastingDictionaryListener.swift */,
 				08720CC7201D7AD60059171B /* BroadcastingDictionary.swift */,
+				08D7F10E20B14DE0006030DD /* BroadcastingDictionaryContentsManager.swift */,
 				08385E5E2027D2AC00C5D7D0 /* BroadcastingDictionaryListener.swift */,
 				08C72CD920156D540064BAF7 /* DictionaryChange.swift */,
 				08720CC9201D7B2C0059171B /* EditableBroadcastingDictionary.swift */,
@@ -574,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08D7F10C20B14AF5006030DD /* AnyBroadcastingDictionaryListener.swift in Sources */,
 				08539FBE20A2DC0000B80671 /* TransactionEditable.swift in Sources */,
 				08539F9F20A2DBF200B80671 /* BroadcastingOrderedSetRepublisher.swift in Sources */,
 				08539F9B20A2DBF200B80671 /* BroadcastingOrderedSet.swift in Sources */,
@@ -588,12 +597,16 @@
 				08539FB820A2DC0000B80671 /* BroadcastingCollectionSourcedContentsManager.swift in Sources */,
 				08539FA220A2DBF200B80671 /* BroadcastingOrderedSetSetSortingContentsManager.swift in Sources */,
 				08539FA720A2DBFA00B80671 /* AnyBroadcastingSetListener.swift in Sources */,
+				08D7F10F20B14DE0006030DD /* BroadcastingDictionaryContentsManager.swift in Sources */,
 				08539FB520A2DC0000B80671 /* BroadcastingCollectionContentsManager.swift in Sources */,
+				08D7F10A20B14AD3006030DD /* BroadcastingDictionary.swift in Sources */,
 				08539FA420A2DBF200B80671 /* BroadcastingOrderedSetSourcedOrderedSetContentsManager.swift in Sources */,
 				08539FBD20A2DC0000B80671 /* ErrorReporter.swift in Sources */,
 				08539F9C20A2DBF200B80671 /* BroadcastingOrderedSetContentsManager.swift in Sources */,
 				08539FAF20A2DBFA00B80671 /* BroadcastingSetSourcedSetContentsManager.swift in Sources */,
+				08D7F10B20B14AE6006030DD /* EditableBroadcastingDictionary.swift in Sources */,
 				08539FB120A2DBFA00B80671 /* EditableBroadcastingSet.swift in Sources */,
+				08D7F10920B14ABC006030DD /* BroadcastingDictionaryListener.swift in Sources */,
 				08539FB320A2DBFA00B80671 /* SetChange.swift in Sources */,
 				08539F9920A2DBF200B80671 /* AnyBroadcastingOrderedSetListener.swift in Sources */,
 				08539FB720A2DC0000B80671 /* BroadcastingCollectionSourced.swift in Sources */,
@@ -607,6 +620,7 @@
 				08539F9A20A2DBF200B80671 /* Array+LongestSortedSubsequence.swift in Sources */,
 				08539FA020A2DBF200B80671 /* BroadcastingOrderedSetSelectionController.swift in Sources */,
 				08539F9D20A2DBF200B80671 /* BroadcastingOrderedSetFilteringContentsManager.swift in Sources */,
+				08D7F10D20B14BAB006030DD /* DictionaryChange.swift in Sources */,
 				08539FA320A2DBF200B80671 /* BroadcastingOrderedSetSortingContentsManager.swift in Sources */,
 				08539FA820A2DBFA00B80671 /* BroadcastingSet.swift in Sources */,
 				08539FA920A2DBFA00B80671 /* BroadcastingSetContentsManager.swift in Sources */,

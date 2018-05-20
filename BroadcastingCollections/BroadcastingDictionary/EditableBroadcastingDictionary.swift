@@ -10,80 +10,117 @@
 import Foundation
 
 
-public final class EditableBroadcastingDictionary<Key: Hashable, Value: Equatable> : BroadcastingDictionary<Key, Value>, TransactionEditable {
+public final class EditableBroadcastingDictionary<Key: Hashable, Value: Equatable> : BroadcastingDictionary<Key, Value>, EditableBroadcastingCollection {
 
-    private var _mutableContents: Dictionary<Key, Value> = [:]
+    /// Default intializer for an empty editable broadcasting set.
+    public override init() {
+    }
 
-    //  Content Access
-    //  Contents is settable. The broadcasting dictionary will transform the existing contents into the given ones following these steps:
-    //  - Remove key/value pairs not present in the incoming contents
-    //  - Replace values for keys already present where the new value is different.
-    //  - Insert key/value pairs not present in original contents.
-    public override var contents: Dictionary<Key, Value> {
+    //  MARK: - EditableBroadcastingCollection Implementation
+
+    public var _contentsManager: BroadcastingDictionaryContentsManager<Key, Value>? = nil
+
+    //  MARK: - EditableBroadcastingCollection Storage
+
+    private var _mutableContents = Dictionary<Key, Value>()
+
+    override public var contents: Dictionary<Key, Value> {
         get {
-            return super.contents
+            return _mutableContents
         }
 
         set {
-            if _mutableContents != newValue {
-                //  Find out which ones we remove and replace.
-                var removalDictionary = Dictionary<Key, Value>()
-                var outgoingReplacementDictionary = Dictionary<Key, Value>()
-                var incomingReplacementDictionary = Dictionary<Key, Value>()
-
-                _mutableContents.forEach({ (key, value) in
-                    if let newValueForKey = newValue[key] {
-                        if newValueForKey != value {
-                            //  It's a replacement
-                            outgoingReplacementDictionary[key] = value
-                            incomingReplacementDictionary[key] = newValueForKey
-                        }
-                    } else {
-                        //  It's a removal.
-                        removalDictionary[key] = value
-                    }
-                })
-
-                let insertionDictionary = (newValue.count - incomingReplacementDictionary.count) > 0 ? newValue.filter({ (key, _) -> Bool in
-                    return _mutableContents[key] == nil
-                }) : [:]
-
-                let doesRemoval = !removalDictionary.isEmpty
-                let doesReplacement = !outgoingReplacementDictionary.isEmpty
-                let doesInsertion = !insertionDictionary.isEmpty
-
-                //  Check if it's going to involve more than one type of operation.
-                let isComplexOperation = ((doesRemoval ? 0 : 1) + (doesReplacement ? 0 : 1) + (doesInsertion ? 0 : 1)) > 1
-                if isComplexOperation {
-                    makeListeners(perform: { (listener) in
-                        listener.broadcastingDictionaryWillBeginTransactions(self)
-                    })
-                }
-
-                if doesRemoval {
-                    _reallyRemove(removalDictionary)
-                }
-
-                if doesReplacement {
-
-                }
-
-                if doesInsertion {
-
-                }
-
-                if isComplexOperation {
-                    makeListeners(perform: { (listener) in
-                        listener.broadcastingDictionaryDidEndTransactions(self)
-                    })
-                }
-            }
+            transformContents(into: newValue)
         }
     }
 
-    //  MARK: TransactionEditable Implementation
+    //  MARK: - TransactionEditable Storage
 
-    public var transactionStackCount: Int = 0
+    private var _ongoingTransactions = CountedSet<TransactionInfo>()
+
+    public override var ongoingTransactions: CountedSet<TransactionInfo> {
+        get {
+            return _ongoingTransactions
+        }
+
+        set {
+            _ongoingTransactions = newValue
+        }
+    }
+}
+
+
+//  MARK: - EditableBroadcastingCollection Implementation
+
+extension EditableBroadcastingDictionary {
+
+    public func apply(change: DictionaryChange<Key, Value>) {
+        //  For the time being there's no support for anything other than insert/remove, so we ignore associated.
+        switch change {
+        case .insertion(let inserted, associatedRemoval: _):
+            break
+
+        case .removal(let removed, associatedInsertion: _):
+            break
+        }
+    }
+
+
+    public func transformContents(into newContents: Dictionary<Key, Value>) {
+        if _mutableContents != newContents {
+            //  Find out which ones we remove and replace.
+            var removalDictionary = Dictionary<Key, Value>()
+            var outgoingReplacementDictionary = Dictionary<Key, Value>()
+            var incomingReplacementDictionary = Dictionary<Key, Value>()
+
+            _mutableContents.forEach({ (key, value) in
+                if let newValueForKey = newContents[key] {
+                    if newValueForKey != value {
+                        //  It's a replacement
+                        outgoingReplacementDictionary[key] = value
+                        incomingReplacementDictionary[key] = newValueForKey
+                    }
+                } else {
+                    //  It's a removal.
+                    removalDictionary[key] = value
+                }
+            })
+
+            let insertionDictionary = (newContents.count - incomingReplacementDictionary.count) > 0 ? newContents.filter({ (key, _) -> Bool in
+                return _mutableContents[key] == nil
+            }) : [:]
+
+            let doesRemoval = !removalDictionary.isEmpty
+            let doesReplacement = !outgoingReplacementDictionary.isEmpty
+            let doesInsertion = !insertionDictionary.isEmpty
+
+            //  Check if it's going to involve more than one type of operation.
+            let isComplexOperation = ((doesRemoval ? 0 : 1) + (doesReplacement ? 0 : 1) + (doesInsertion ? 0 : 1)) > 1
+            if isComplexOperation {
+                makeListeners(perform: { (listener) in
+                    listener.broadcastingDictionaryWillBeginTransactions(self)
+                })
+            }
+
+            if doesRemoval {
+                _reallyRemove(removalDictionary)
+            }
+
+            if doesReplacement {
+
+            }
+
+            if doesInsertion {
+
+            }
+
+            if isComplexOperation {
+                makeListeners(perform: { (listener) in
+                    listener.broadcastingDictionaryDidEndTransactions(self)
+                })
+            }
+        }
+    }
 }
 
 

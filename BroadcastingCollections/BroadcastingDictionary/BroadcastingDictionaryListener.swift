@@ -13,13 +13,13 @@ import Foundation
 /**
  A protocol for types who subscribe to BroadcastingDictionary changes.
  */
-public protocol BroadcastingDictionaryListener: BroadcastingCollectionListener where ListenedCollectionTypes == DictionaryTypesWrapper<ListenedKeyType, ListenedValueType>, ListenedBroadcasterType: BroadcastingDictionary<ListenedKeyType, ListenedValueType> {
+public protocol BroadcastingDictionaryListener: BroadcastingCollectionListener where ListenedCollectionTypes == DictionaryTypesWrapper<ListenedKeyType, ListenedValueType> {
 
     /// Key type for the broadcasting dictionaries this listener can listen to.
-    associatedtype ListenedKeyType
+    associatedtype ListenedKeyType: Hashable
 
     /// Value type for the broadcasting dictionaries this listener can listen to.
-    associatedtype ListenedValueType
+    associatedtype ListenedValueType: Equatable
 
 
     /**

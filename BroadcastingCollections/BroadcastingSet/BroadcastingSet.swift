@@ -93,9 +93,9 @@ open class BroadcastingSet<Element: Hashable>: BroadcastingCollection, Broadcast
 
     //  MARK: TransactionSupport Implementation
 
-    /// Abstract default implementation blows up.
+    /// Abstract default implementation returns an empty counted set.
     public var ongoingTransactions: CountedSet<TransactionInfo> {
-        preconditionFailure("Attempted to call abstract property \(#function)")
+        return CountedSet()
     }
 
     //  MARK: BroadcastingSetRepresentable Implementation

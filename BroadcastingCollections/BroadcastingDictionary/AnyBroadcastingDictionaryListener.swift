@@ -12,9 +12,11 @@ import Foundation
 ///  type erasing wrapper over BroadcastingDictionaryListener. Needs to be a class as they'll be stored in a NSMapTable.
 public final class AnyBroadcastingDictionaryListener<Key: Hashable, Value: Equatable>: BroadcastingDictionaryListener {
 
-    public typealias KeyType = Key
+    public typealias ListenedCollectionTypes = DictionaryTypesWrapper<Key, Value>
 
-    public typealias ValueType = Value
+    public typealias ListenedKeyType = Key
+
+    public typealias ListenedValueType = Value
 
 
     public required init<Listener: BroadcastingDictionaryListener>(_ listener: Listener) where Listener.ListenedKeyType == Key, Listener.ListenedValueType == Value {

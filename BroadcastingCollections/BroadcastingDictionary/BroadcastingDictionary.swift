@@ -12,7 +12,7 @@ import Foundation
 
 public struct DictionaryTypesWrapper<Key: Hashable, Value: Equatable>: CollectionTypesWrapper {
 
-    public typealias Element = (Key, Value)
+    public typealias ElementType = (Key, Value)
 
     public typealias CollectionType = Dictionary<Key, Value>
 
@@ -20,7 +20,11 @@ public struct DictionaryTypesWrapper<Key: Hashable, Value: Equatable>: Collectio
 
     public typealias ChangeDescription = Dictionary<Key, Value>
 
+    public typealias BroadcastingCollectionType = BroadcastingDictionary<Key, Value>
+
     public typealias EditableBroadcastingCollectionType = EditableBroadcastingDictionary<Key, Value>
+
+    public typealias BroadcastingCollectionContentsManagerType = BroadcastingDictionaryContentsManager<Key, Value>
 
     public typealias ListenerWrapperType = AnyBroadcastingDictionaryListener<Key, Value>
 }
@@ -40,13 +44,20 @@ public class BroadcastingDictionary<Key: Hashable, Value: Equatable>: Broadcasti
         _listenerTable.setObject(AnyBroadcastingDictionaryListener<Key, Value>(listener), forKey: listener)
     }
 
+
+    public func remove<ListenerType>(listener: ListenerType) where ListenerType : BroadcastingCollectionListener, BroadcastingDictionary.BroadcastCollectionTypes == ListenerType.ListenedCollectionTypes {
+        _listenerTable.removeObject(forKey: listener)
+    }
+
     /// Seriously don't touch this guy.
     public var _listenerTable = NSMapTable<AnyObject, AnyBroadcastingDictionaryListener<Key, Value>>.weakToStrongObjects()
 
     //  MARK: TransactionSupport Implementation
 
-    /// Abstract default implementation blows up.
-    public var isExecutingTransactions: Bool {
-        preconditionFailure("Attempted to call abstract property \(#function)")
+    //  MARK: TransactionSupport Implementation
+
+    /// Abstract default implementation returns an empty counted set.
+    public var ongoingTransactions: CountedSet<TransactionInfo> {
+        return CountedSet()
     }
 }
