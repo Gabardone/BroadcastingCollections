@@ -43,3 +43,5 @@ Anyone who may want to contribute patches, keep in mind the following:
 Copyright 2018 Óscar Morales Vivó
 
 Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
+
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
