@@ -1,4 +1,4 @@
-# BroadcastingCollections
+# BroadcastingCollections [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 BroadcastingCollections is a library of classes and protocols that gives developers the ability to easily and efficiently keep track of changes being made to a collection, receiving callbacks about what precisely those changes are at the appropriate times and allowing for easy creation of automatically updated filtered and sorted versions of those collections.
 
 ## Compatibility
@@ -43,5 +43,3 @@ Anyone who may want to contribute patches, keep in mind the following:
 Copyright 2018 Óscar Morales Vivó
 
 Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
-
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
