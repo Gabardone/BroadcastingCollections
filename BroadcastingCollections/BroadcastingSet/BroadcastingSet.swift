@@ -112,9 +112,9 @@ open class BroadcastingSet<Element: Hashable>: BroadcastingCollection, Broadcast
  BroadcastingSet implements hashable mostly so we can use them as sources for MultiBroadcastingSetSourcedContentsManager.
  */
 extension BroadcastingSet: Hashable {
-    public var hashValue: Int {
-        //  Hash on the identity.
-        return ObjectIdentifier(self).hashValue
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 
 

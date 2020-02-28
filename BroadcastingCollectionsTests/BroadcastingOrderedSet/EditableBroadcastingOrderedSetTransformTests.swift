@@ -229,7 +229,7 @@ class EditableBroadcastingOrderedSetTransformTests: EditableBroadcastingOrderedS
 
         //  Do the actual transform.
         editableBroadcastingOrderedSet.set(destinationContent) { (replacee, indexSet) -> BroadcastingCollectionTestContent? in
-            if let replacementIndex = indexSet.index(where: { (index) -> Bool in
+            if let replacementIndex = indexSet.firstIndex(where: { (index) -> Bool in
                 let candidateContent = destinationContent[index] as! BroadcastingCollectionTestContent
                 return replacee.number == candidateContent.number
             }) {
@@ -294,7 +294,7 @@ class EditableBroadcastingOrderedSetTransformTests: EditableBroadcastingOrderedS
 
         //  Do the actual transform.
         editableBroadcastingOrderedSet.set(destinationContent) { (replacee, indexSet) -> BroadcastingCollectionTestContent? in
-            if let replacementIndex = indexSet.index(where: { (index) -> Bool in
+            if let replacementIndex = indexSet.firstIndex(where: { (index) -> Bool in
                 let candidateContent = destinationContent[index] as! BroadcastingCollectionTestContent
                 return replacee.number == candidateContent.number
             }) {
@@ -362,7 +362,7 @@ class EditableBroadcastingOrderedSetTransformTests: EditableBroadcastingOrderedS
 
         //  Do the actual transform.
         editableBroadcastingOrderedSet.set(destinationContent) { (replacee, indexSet) -> BroadcastingCollectionTestContent? in
-            if let replacementIndex = indexSet.index(where: { (index) -> Bool in
+            if let replacementIndex = indexSet.firstIndex(where: { (index) -> Bool in
                 let candidateContent = destinationContent[index] as! BroadcastingCollectionTestContent
                 return replacee.number == candidateContent.number
             }) {
@@ -438,7 +438,7 @@ class EditableBroadcastingOrderedSetTransformTests: EditableBroadcastingOrderedS
 
         //  Do the actual transform.
         editableBroadcastingOrderedSet.set(destinationContent) { (replacee, indexSet) -> BroadcastingCollectionTestContent? in
-            if let replacementIndex = indexSet.index(where: { (index) -> Bool in
+            if let replacementIndex = indexSet.firstIndex(where: { (index) -> Bool in
                 let candidateContent = destinationContent[index] as! BroadcastingCollectionTestContent
                 return replacee.number == candidateContent.number
             }) {

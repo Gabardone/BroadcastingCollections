@@ -32,7 +32,7 @@ open class BroadcastingOrderedSetFilteringContentsManager<Element: Hashable & An
         //  contentSource's contents.
         //  We take a range parameter so we can use it to help determine if an element should be moved.
         let sourceContents = contentsSource!.contents
-        return (self as BroadcastingOrderedSetContentsManager<Element>).managedContents!.contents.index(of: element, inSortedRange: NSRange(Range(range)), options: .insertionIndex, usingComparator: { (obj1, obj2) -> ComparisonResult in
+        return (self as BroadcastingOrderedSetContentsManager<Element>).managedContents!.contents.index(of: element, inSortedRange: NSRange(range), options: .insertionIndex, usingComparator: { (obj1, obj2) -> ComparisonResult in
             let obj1SourceIndex = sourceContents.index(of: obj1)
             let obj2SourceIndex = sourceContents.index(of: obj2)
             if obj1SourceIndex < obj2SourceIndex {

@@ -61,7 +61,7 @@ class BroadcastingSetFilteringContentsManagerTests: BroadcastingSetSourcedConten
 
     func testReevaluateOneElementDidNotChangeFiltering() {
         //  We change one element and reevaluate it, but filtering should stay the same.
-        let alteredElement = broadcastingSetSource.contents[broadcastingSetSource.contents.index(of: sampleContent[0])!]
+        let alteredElement = broadcastingSetSource.contents[broadcastingSetSource.contents.firstIndex(of: sampleContent[0])!]
         alteredElement.number = 31
 
         oddFilter.reevaluate(alteredElement)
@@ -72,7 +72,7 @@ class BroadcastingSetFilteringContentsManagerTests: BroadcastingSetSourcedConten
 
     func testReevaluateOneElementDidChangeFromFilteredToUnfiltered() {
         //  We change an element that was filtered in so it's not anymore, and then we track that the changes in the filtered managed contents are what we expect.
-        let alteredElement = broadcastingSetSource.contents[broadcastingSetSource.contents.index(of: sampleContent[6])!]
+        let alteredElement = broadcastingSetSource.contents[broadcastingSetSource.contents.firstIndex(of: sampleContent[6])!]
         alteredElement.number = 32
 
         oddFilter.reevaluate(alteredElement)
@@ -88,7 +88,7 @@ class BroadcastingSetFilteringContentsManagerTests: BroadcastingSetSourcedConten
 
     func testReevaluateOneElementDidChangeFromUnfilteredToFiltered() {
         //  We change an element that was not filtered in so it is, and then we track that the changes in the filtered managed contents are what we expect.
-        let alteredElement = broadcastingSetSource.contents[broadcastingSetSource.contents.index(of: sampleContent[7])!]
+        let alteredElement = broadcastingSetSource.contents[broadcastingSetSource.contents.firstIndex(of: sampleContent[7])!]
         alteredElement.number = 31
 
         oddFilter.reevaluate(alteredElement)
@@ -108,7 +108,7 @@ class BroadcastingSetFilteringContentsManagerTests: BroadcastingSetSourcedConten
         let sourceContents = broadcastingSetSource.contents
         let alteredRange = sampleContent.count / 3 ..< (sampleContent.count / 3) * 2
         let alteredElements = Set(sampleContent[alteredRange].map({ (element) -> BroadcastingCollectionTestContent in
-            return sourceContents[sourceContents.index(of: element)!]
+            return sourceContents[sourceContents.firstIndex(of: element)!]
         }))
 
         alteredElements.forEach { (element) in
@@ -127,7 +127,7 @@ class BroadcastingSetFilteringContentsManagerTests: BroadcastingSetSourcedConten
         let sourceContents = broadcastingSetSource.contents
         let alteredRange = sampleContent.count / 3 ..< (sampleContent.count / 3) * 2
         let alteredElements = Set(sampleContent[alteredRange].map({ (element) -> BroadcastingCollectionTestContent in
-            return sourceContents[sourceContents.index(of: element)!]
+            return sourceContents[sourceContents.firstIndex(of: element)!]
         }))
 
         alteredElements.forEach { (element) in

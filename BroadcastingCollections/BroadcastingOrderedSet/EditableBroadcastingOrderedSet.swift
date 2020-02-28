@@ -171,7 +171,7 @@ extension EditableBroadcastingOrderedSet {
         }
 
         //  Validate that none of the replacees are in newContents.
-        guard replaceeIndexes.index(where: { (index) -> Bool in
+        guard replaceeIndexes.firstIndex(where: { (index) -> Bool in
             return newContents.contains(_mutableContents[index])
         }) == nil else {
             ErrorReporter.report("Replacee element actually present in new contents")

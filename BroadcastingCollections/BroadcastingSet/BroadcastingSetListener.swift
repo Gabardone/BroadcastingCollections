@@ -170,7 +170,7 @@ public extension BroadcastingSetFullListener {
      - Parameter broadcastingSet: The broadcasting set which will apply the given change.
      - Parameter change: The change to be applied.
      */
-    public func process(broadcastingSet: BroadcastingSet<ListenedElement>, willApply change: SetChange<ListenedElement>) {
+    func process(broadcastingSet: BroadcastingSet<ListenedElement>, willApply change: SetChange<ListenedElement>) {
         switch change {
         case .insertion(let insertedElements, _):
             self.broadcastingSet(broadcastingSet, willAdd: insertedElements)
@@ -181,7 +181,7 @@ public extension BroadcastingSetFullListener {
     }
 
 
-    public func broadcastingSet(_ broadcastingSet: BroadcastingSet<ListenedElement>, willApply change: SetChange<ListenedElement>) {
+    func broadcastingSet(_ broadcastingSet: BroadcastingSet<ListenedElement>, willApply change: SetChange<ListenedElement>) {
         process(broadcastingSet: broadcastingSet, willApply: change)
     }
 
@@ -194,7 +194,7 @@ public extension BroadcastingSetFullListener {
      - Parameter broadcastingSet: The broadcasting set which did apply the given change.
      - Parameter change: The change that was applied.
      */
-    public func process(broadcastingSet: BroadcastingSet<ListenedElement>, didApply change: SetChange<ListenedElement>) {
+    func process(broadcastingSet: BroadcastingSet<ListenedElement>, didApply change: SetChange<ListenedElement>) {
         switch change {
         case .insertion(let insertedElements, _):
             self.broadcastingSet(broadcastingSet, didAdd: insertedElements)
@@ -205,7 +205,7 @@ public extension BroadcastingSetFullListener {
     }
 
 
-    public func broadcastingSet(_ broadcastingSet: BroadcastingSet<ListenedElement>, didApply change: SetChange<ListenedElement>) {
+    func broadcastingSet(_ broadcastingSet: BroadcastingSet<ListenedElement>, didApply change: SetChange<ListenedElement>) {
         process(broadcastingSet: broadcastingSet, didApply: change)
     }
 

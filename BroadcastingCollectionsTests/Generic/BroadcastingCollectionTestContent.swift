@@ -49,11 +49,6 @@ class BroadcastingCollectionTestContent: NSObject {
 
     //  NSOrderedSet isn't catching up on hashValue.
     override var hash: Int {
-        return hashValue
-    }
-
-
-    override var hashValue: Int {
         return self.string.hashValue
     }
 

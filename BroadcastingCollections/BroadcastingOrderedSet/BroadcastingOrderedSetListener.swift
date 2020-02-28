@@ -217,7 +217,7 @@ public extension BroadcastingOrderedSetFullListener {
     //  Decomposes and calls the more specific Full Listener methods. Default implementation calls this, left as a
     //  separate method so it can be called in those cases where the default won't apply (i.e. overrides of classes
     //  implementing the vanilla listener protocol differently).
-    public func process(broadcastingOrderedSet: BroadcastingOrderedSet<ListenedElement>, willApply change: IndexedCollectionChange<ListenedElement>) {
+    func process(broadcastingOrderedSet: BroadcastingOrderedSet<ListenedElement>, willApply change: IndexedCollectionChange<ListenedElement>) {
         switch change {
         case .insertion(let inserted, let associatedRemoval):
             //  If we have an associated it's the end of a move/replace so we don't need to report on willApply.
@@ -246,7 +246,7 @@ public extension BroadcastingOrderedSetFullListener {
     }
 
 
-    public func broadcastingOrderedSet(_ broadcastingOrderedSet: BroadcastingOrderedSet<ListenedElement>, willApply change: IndexedCollectionChange<ListenedElement>) {
+    func broadcastingOrderedSet(_ broadcastingOrderedSet: BroadcastingOrderedSet<ListenedElement>, willApply change: IndexedCollectionChange<ListenedElement>) {
         process(broadcastingOrderedSet: broadcastingOrderedSet, willApply: change)
     }
 
@@ -254,7 +254,7 @@ public extension BroadcastingOrderedSetFullListener {
     //  Decomposes and calls the more specific Full Listener methods. Default implementation calls this, left as a
     //  separate method so it can be called in those cases where the default won't apply (i.e. overrides of classes
     //  implementing the vanilla listener protocol differently).
-    public func process(broadcastingOrderedSet: BroadcastingOrderedSet<ListenedElement>, didApply change: IndexedCollectionChange<ListenedElement>) {
+    func process(broadcastingOrderedSet: BroadcastingOrderedSet<ListenedElement>, didApply change: IndexedCollectionChange<ListenedElement>) {
         //  Decompose the changes into calls to the more find grained methods.
         switch change {
         case .insertion(let insertion, let associatedRemoval):
@@ -285,7 +285,7 @@ public extension BroadcastingOrderedSetFullListener {
     }
 
 
-    public func broadcastingOrderedSet(_ broadcastingOrderedSet: BroadcastingOrderedSet<ListenedElement>, didApply change: IndexedCollectionChange<ListenedElement>) {
+    func broadcastingOrderedSet(_ broadcastingOrderedSet: BroadcastingOrderedSet<ListenedElement>, didApply change: IndexedCollectionChange<ListenedElement>) {
         process(broadcastingOrderedSet: broadcastingOrderedSet, didApply: change)
     }
 

@@ -53,9 +53,9 @@ public struct TransactionInfo: Hashable {
 
     //  MARK: Hashable Implementation
 
-    public var hashValue: Int {
-        //  Just add the hashes of the components.
-        return identifier.hashValue ^ ObjectIdentifier(originator).hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier.hashValue)
+        hasher.combine(ObjectIdentifier(originator).hashValue)
     }
 
 

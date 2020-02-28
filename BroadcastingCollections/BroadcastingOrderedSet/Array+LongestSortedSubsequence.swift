@@ -15,7 +15,7 @@ public extension Collection where Self.Index == Int {
     /** Returns an array with the element at the given indexes.
     - Parameter indexes: The indexes of the elements to retrieve.
      */
-    public subscript(indexes: IndexSet) -> [Element] {
+    subscript(indexes: IndexSet) -> [Element] {
         let indexCount = indexes.count
         switch indexCount {
         case 0:
@@ -57,7 +57,7 @@ public extension Array {
     - Note: If the given element is already present in the array the result will be correct but no further guarantees
      are made about it.
      */
-    public func insertionIndex(for element: Element, arraySortedUsing comparator: (Element, Element) -> Bool) -> Index {
+    func insertionIndex(for element: Element, arraySortedUsing comparator: (Element, Element) -> Bool) -> Index {
         return insertionIndex(for: element, in: startIndex ..< endIndex, arraySortedUsing: comparator)
     }
 
@@ -71,7 +71,7 @@ public extension Array {
     - Parameter range: The sorted range within the array where we want to find the insertion index for element.
     - Parameter comparator: The comparator block the range in the array is already sorted with.
      */
-    public func insertionIndex(for element: Element, in range: Range<Int>, arraySortedUsing comparator: (Element, Element) -> Bool) -> Index {
+    func insertionIndex(for element: Element, in range: Range<Int>, arraySortedUsing comparator: (Element, Element) -> Bool) -> Index {
         return _binarySearch(in: range, sortingCriteria: { (otherElement) -> Bool in
             return comparator(otherElement, element)
         })
@@ -102,7 +102,7 @@ public extension Array {
     - Result: An index set pointing to the indexes of a longest sorted subsequence in the calling array.
     - Parameter comparator: The sorting criteria expressed as a block.
      */
-    public func indexesOfLongestSortedSubsequence(sortedBy comparator: (Element, Element) -> Bool) -> IndexSet {
+    func indexesOfLongestSortedSubsequence(sortedBy comparator: (Element, Element) -> Bool) -> IndexSet {
         return indexesOfLongestSortedSubsequence(from: IndexSet(integersIn: indices), sortedBy: comparator)
     }
 
@@ -116,7 +116,7 @@ public extension Array {
     - Parameter indexes: The indexes of the array whose longest sorted subsequence we aim to find.
     - Parameter comparator: The sorting criteria expressed as a block.
      */
-    public func indexesOfLongestSortedSubsequence(from indexes: IndexSet, sortedBy comparator: (Element, Element) -> Bool) -> IndexSet {
+    func indexesOfLongestSortedSubsequence(from indexes: IndexSet, sortedBy comparator: (Element, Element) -> Bool) -> IndexSet {
         var pileTops: [LSNode] = []
 
         //  Sort into piles.

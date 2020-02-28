@@ -97,7 +97,7 @@ class BroadcastingOrderedSetSetSortingContentsManagerTests: BroadcastingOrderedS
         let numberSorter = setupNumberSorting()
 
         //  We change one element and reevaluate it, but sorting should stay the same.
-        let modifiedElement = broadcastingSetSource.contents[broadcastingSetSource.contents.index(of: sampleContent[0])!]
+        let modifiedElement = broadcastingSetSource.contents[broadcastingSetSource.contents.firstIndex(of: sampleContent[0])!]
         modifiedElement.number = -1
 
         numberSorter.reevaluate(modifiedElement)
@@ -110,7 +110,7 @@ class BroadcastingOrderedSetSetSortingContentsManagerTests: BroadcastingOrderedS
         let numberSorter = setupNumberSorting()
 
         //  We change one element so it's sort order should change (sending it to the end) and reevaluate it.
-        let modifiedElement = broadcastingSetSource.contents[broadcastingSetSource.contents.index(of: sampleContent[6])!]
+        let modifiedElement = broadcastingSetSource.contents[broadcastingSetSource.contents.firstIndex(of: sampleContent[6])!]
         modifiedElement.number = 20
 
         numberSorter.reevaluate(modifiedElement)
