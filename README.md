@@ -2,9 +2,9 @@
 BroadcastingCollections is a library of classes and protocols that gives developers the ability to easily and efficiently keep track of changes being made to a collection, receiving callbacks about what precisely those changes are at the appropriate times and allowing for easy creation of automatically updated filtered and sorted versions of those collections.
 
 ## Compatibility
-BroadcastingCollections is currently being built on Xcode 9.3.1, using Apple's latest SDK and Swift 4.1.
+BroadcastingCollections is currently being built on Xcode 11.3, using Apple's latest SDK and Swift 5.1.
 
-It's been used and tested on macOS 10.13 and iOS 11, but should work without changes on the latest versions of TvOS and WatchOS. 
+It's been used and tested on macOS 10.13 to 10.14 and iOS 11 - iOS 13, but should work without changes on the latest versions of TvOS and WatchOS. 
 
 It should also work with minimal changes on any older Apple OS which supports Swift deployment.
 
